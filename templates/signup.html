@@ -1,0 +1,60 @@
+{% include 'header.html'%}
+    <section
+      class="hero-section"
+      style="
+        background-image: url('https://plus.unsplash.com/premium_vector-1726216371069-9e179b7ff838?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      "
+    >
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="hero-title">WELCOME TO Mallify</h1>
+        <div class="d-flex justify-content-start align-items-center">
+          <p class="hero-subtitle">Let's get you started with Mallify!</p>
+        </div>
+      </div>
+    </section>
+    <section class="container my-5 shadow py-5 rounded">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <i class="fa-solid fa-shop" style="font-size: 8rem"></i>
+        <h2 class="mb-4">Create an Account</h2>
+      </div>
+      <form>
+        <div class="mb-4">
+          <label for="name" class="form-label fs-5 fw-medium">Name</label>
+          <input
+            type="name"
+            class="form-control"
+            id="name"
+            placeholder="Enter your Name"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="form-label fw-medium fs-5"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label fw-medium fs-5"
+            >Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+          Login
+        </button>
+      </form>
+    </section>
+{% include 'footer.html'%}
