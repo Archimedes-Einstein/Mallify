@@ -259,25 +259,73 @@ footer {
   font-size: 1.5rem;
 }
 .product-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 .product-price {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
+}
+.discount-price{
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #7f8081;
+    text-decoration: line-through;
 }
 .product-image {
   width: 100%;
-  height: 100%;
+  height: 380px;
   object-fit: cover;
   overflow: hidden;
   position: relative;
 }
+.search-container{
+    position:relative;
+    width: 50%;
+}
+.product-search{
+    height:100%;
+    width: 100%;
+    text-align: right;
+    border: none;
+    background-color: #C5C7BC;
+}
+.product-search:focus{
+    outline: none;
+}
+.search-btn{
+    position:absolute;
+    border:none;
+    top:0;
+    left:0;
+    background-color: #C5C7BC;
+    height:100%;
+    text-align: center
+}
 .add-to-cart {
   position: absolute;
-  bottom: 10px;
-  right: 5px;
+  bottom: 1rem;
+  right: 1rem;
 }
+
+  .category{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .remove-from-cart {
+  position: absolute;
+  background-color: #fff;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+}
+  .fa-trash-can:hover{
+    color: red;
+  }
+  .fa-pen-to-square:hover{
+    color: blue;
+  }
 @media (max-width: 770px) {
   .hero-section {
     height: 50vh;
@@ -338,6 +386,10 @@ footer {
     font-size: 0.7rem;
     /* font-weight: 600; */
   }
+  .product-image{
+    height: 300px;
+  }
+
   @media (max-width: 468px) {
     .hero-title {
       font-size: 2.2rem;

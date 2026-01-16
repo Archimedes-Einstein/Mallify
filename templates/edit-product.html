@@ -1,0 +1,175 @@
+{% include 'header.html' %}
+<section
+        class="hero-section"
+        style="
+        background-image: url('{{edit_product.img_url}}');
+      "
+>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <h1 class="hero-title">Edit Product</h1>
+        <div class="d-flex justify-content-start align-items-center">
+            <p class="hero-subtitle">
+                Make your more authentic
+            </p>
+        </div>
+    </div>
+</section>
+<section class="container my-5 shadow py-5 rounded">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <i class="fa-solid fa-shop" style="font-size: 8rem"></i>
+        <h2 class="mb-4">Edit your product</h2>{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert alert-warning d-flex align-items-center justify-content-around" role="alert">
+            <i class="fa-solid fa-triangle-exclamation fa-lg" style="color: #FFD43B;"></i>
+            <ul class="flashes mb-0 pl-0"
+                style="list-style:none;color:red;">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form action="{{url_for('edit',product_id=edit_product.id)}}" method="post" novalidate class="needs-validation">
+
+        <div class="mb-4">
+            <label for="product_name" class="form-label fs-6 fw-medium"
+            >Product Name</label
+            >
+            <input
+                    type="text"
+                    class="form-control"
+                    name="product_name"
+                    id="product_name"
+                    value="{{edit_product.name}}"
+                    placeholder="Enter your Product Name"
+                    required
+            />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter a name for your product
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="img_url" class="form-label fs-6 fw-medium"
+            >Image URL</label
+            >
+            <input
+                    type="url"
+                    class="form-control"
+                    name="img_url"
+                    id="img_url"
+                    placeholder="Image Address"
+                    value = "{{edit_product.img_url}}"
+                    required
+            />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter the image address of the product you intend to sell.
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="price" class="form-label fs-6 fw-medium"
+            >Price</label
+            >
+            <input
+                    type="text"
+                    class="form-control"
+                    name="price"
+                    id="price"
+                    value="{{edit_product.price}}"
+                    placeholder="E.g $3.00"
+                    required
+            />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter a price fpr your product
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="category" class="form-label fs-6 fw-medium"
+            >Category</label
+            >
+            <input class="form-control"
+                   name="category"
+                   type="text"
+                   id="category"
+                   value="{{edit_product.category}}"
+                   placeholder="Enter your product category (Clothes / Books / Accessories)" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please Enter your product Category
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="form-label fs-6 fw-medium"
+            >Description</label
+            >
+            <textarea
+                    rows="10"
+                    name="description"
+                    class="form-control"
+                    id="description"
+                    placeholder="The number of products that you can supply"
+                    required
+            >
+                {{edit_product.description}}
+            </textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                You must at least describe your product
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label for="instock" class="form-label fs-6 fw-medium"
+            >Amount in Stock</label
+            >
+            <input
+                    type="number"
+                    name="instock"
+                    class="form-control"
+                    id="instock"
+                    value="{{edit_product.no_in_stock}}"
+                    placeholder="Amount in stock"
+                    required
+            />
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter the amount you have in stock.
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="discount" class="form-label fs-6 fw-medium"
+            >Discount</label
+            >
+            <input
+                    type="number"
+                    name="discount"
+                    class="form-control"
+                    value="{{edit_product.discount}}"
+                    id="discount"
+                    placeholder="Enter your discount as an integer (e.g 20 for 20% discount)"
+            />
+
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg w-100">
+            Edit
+        </button>
+    </form>
+</section>
+{% include 'footer.html' %}

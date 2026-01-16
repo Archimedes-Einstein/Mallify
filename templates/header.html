@@ -59,6 +59,27 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">Home</a>
                     </li>
+                    {% if current_user.is_authenticated%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('products')}}">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('add_products')}}">Add products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('cart')}}">
+                            <div class="cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <div class="cart-icon">
+                                    <span class="cart-number">{{cart_no}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link" href="{{url_for('login')}}">Login</a>
                     </li>
@@ -66,18 +87,14 @@
                         <a class="nav-link" href="{{url_for('signup')}}">Sign Up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('products')}}">Products</a>
+                        <a class="nav-link" href="{{url_for('products')}}">About us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url_for('cart')}}">
-                            <div class="cart">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <div class="cart-icon">
-                                    <span class="cart-number">0</span>
-                                </div>
-                            </div>
-                        </a>
+                        <a class="nav-link" href="{{url_for('products')}}">Contact us</a>
                     </li>
+                    {% endif %}
+
+
                 </ul>
                 <!-- <form class="d-flex" role="search">
                   <input

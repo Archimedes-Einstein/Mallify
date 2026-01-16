@@ -1,324 +1,249 @@
 {% include 'header.html' %}
-    <main>
-      <section
-        class="hero-section"
-        style="
+<main>
+    <section
+            class="hero-section"
+            style="
           background-image: url('https://plus.unsplash.com/premium_photo-1693011410217-87dd1aa328e5?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
         "
-      >
+    >
         <h1 class="hero-title">Our Products</h1>
         <p class="hero-subtitle text-center">
-          Explore our wide range of products across various categories.
+            Explore our wide range of products across various categories.
         </p>
-      </section>
-      <section class="container-fluid py-5 px-4">
+    </section>
+    <section class="container-fluid py-5 px-4">
         <div class="row justify-content-between">
-          <div class="col-lg-3 col-md-6 col-12 shadow h-75 pb-4">
-            <h2 class="fw-medium fs-3 text-start py-2">Filter By</h2>
-            <form
-              class="d-flex flex-column justify-content-start align-items-center gap-4"
-            >
-              <div
-                class="d-flex flex-column justify-content-center align-items-start w-100"
-              >
-                <label class="form-label">Category</label>
-                <ul class="px-0">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="all"
-                      checked
-                    />
-                    <label class="form-check-label" for="all">All</label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="clothes"
-                    />
-                    <label class="form-check-label" for="clothes"
-                      >Clothes</label
-                    >
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="accessories"
-                    />
-                    <label class="form-check-label" for="accessories"
-                      >Accessories</label
-                    >
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="books"
-                    />
-                    <label class="form-check-label" for="books">Books</label>
-                  </div>
-                </ul>
-              </div>
-              <div
-                class="d-flex flex-column justify-content-center align-items-start w-100"
-              >
-                <label class="form-label" for="currency">Currency</label>
-                <select
-                  class="form-select"
-                  aria-label="Default select example"
-                  id="currency"
+            <div class="col-lg-3 col-md-6 col-12 shadow h-75 pb-4">
+                <h2 class="fw-medium fs-3 text-start py-2">Filter By</h2>
+                <form
+                        class="d-flex flex-column justify-content-start align-items-center gap-4"
                 >
-                  <option selected>Dollar</option>
-                  <option value="Naira">Naira</option>
-                  <option value="Euro">Euro</option>
-                </select>
-              </div>
-              <div
-                class="d-flex flex-column justify-content-center align-items-start w-100"
-              >
-                <label class="form-label" for="rangeId">Price</label>
-                <input
-                  class="form-range"
-                  type="range"
-                  id="rangeId"
-                  min="1"
-                  max="300"
-                  value="50"
-                />
-                <output for="rangeId" id="rangeValue"></output>
-              </div>
-              <div
-                class="d-flex flex-column justify-content-center align-items-start w-100"
-              >
-                <label class="form-label">Brands</label>
-                <ul class="px-0">
-                  <div class="form-check">
+                    <div
+                            class="d-flex flex-column justify-content-center align-items-start w-100"
+                    >
+                        <label class="form-label">Category</label>
+                        <ul class="px-0">
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="all"
+                                        checked
+                                />
+                                <label class="form-check-label" for="all">All</label>
+                            </div>
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="clothes"
+                                />
+                                <label class="form-check-label" for="clothes"
+                                >Clothes</label
+                                >
+                            </div>
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="accessories"
+                                />
+                                <label class="form-check-label" for="accessories"
+                                >Accessories</label
+                                >
+                            </div>
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="books"
+                                />
+                                <label class="form-check-label" for="books">Books</label>
+                            </div>
+                        </ul>
+                    </div>
+                    <div
+                            class="d-flex flex-column justify-content-center align-items-start w-100"
+                    >
+                        <label class="form-label" for="currency">Currency</label>
+                        <select
+                                class="form-select"
+                                aria-label="Default select example"
+                                id="currency"
+                        >
+                            <option selected>Dollar</option>
+                            <option value="Naira">Naira</option>
+                            <option value="Euro">Euro</option>
+                        </select>
+                    </div>
+                    <div
+                            class="d-flex flex-column justify-content-center align-items-start w-100"
+                    >
+                        <label class="form-label" for="rangeId">Price</label>
+                        <input
+                                class="form-range"
+                                type="range"
+                                id="rangeId"
+                                min="1"
+                                max="300"
+                                value="50"
+                        />
+                        <output for="rangeId" id="rangeValue"></output>
+                    </div>
+                    <div
+                            class="d-flex flex-column justify-content-center align-items-start w-100"
+                    >
+                        <label class="form-label">Brands</label>
+                        <ul class="px-0">
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="all-brands"
+                                        checked
+                                />
+                                <label class="form-check-label" for="all-brands">All</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="nike"/>
+                                <label class="form-check-label" for="nike">Nike</label>
+                            </div>
+                            <div class="form-check">
+                                <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        id="adidas"
+                                />
+                                <label class="form-check-label" for="adidas">Adidas</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="puma"/>
+                                <label class="form-check-label" for="puma">Puma</label>
+                            </div>
+                        </ul>
+                    </div>
                     <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="all-brands"
-                      checked
+                            class="btn btn-primary w-100"
+                            type="submit"
+                            value="Apply"
                     />
-                    <label class="form-check-label" for="all-brands">All</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="nike" />
-                    <label class="form-check-label" for="nike">Nike</label>
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="adidas"
-                    />
-                    <label class="form-check-label" for="adidas">Adidas</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="puma" />
-                    <label class="form-check-label" for="puma">Puma</label>
-                  </div>
-                </ul>
-              </div>
-              <input
-                class="btn btn-primary w-100"
-                type="submit"
-                value="Apply"
-              />
-            </form>
-          </div>
-          <div
-            class="col-lg-9 col-md-6 col-12 d-flex flex-column align-items-center"
-          >
-            <h2 class="features-title">Shop By Category</h2>
-            <div class="row justify-content-between g-2 py-5">
-              <div class="col-md-4 col-12">
-                <div class="card shadow" style="width: 100%">
-                  <div class="card-container">
-                    <img
-                      src="https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?q=80&w=1026&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="card-img-top card-image"
-                      alt="..."
-                      height="100%"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Electronics</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 col-12">
-                <div class="card shadow" style="width: 100%">
-                  <div class="card-container">
-                    <img
-                      src="https://plus.unsplash.com/premium_vector-1724163333366-dc150b75f069?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="card-img-top card-image"
-                      alt="..."
-                      height="100%"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Books</h5>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 col-12">
-                <div class="card shadow" style="width: 100%">
-                  <div class="card-container">
-                    <img
-                      src="https://plus.unsplash.com/premium_vector-1750432429500-5cd8f58f37f8?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                      class="card-img-top card-image"
-                      alt="..."
-                      height="100%"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <h5 class="card-title text-center">Clothing</h5>
-                  </div>
-                </div>
-              </div>
+                </form>
             </div>
-            <h2 class="features-title">Products</h2>
-            <div class="container py-5">
-              <div class="row justify-content-center g-4">
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start overflow-hidden position-relative"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                        <i class="fa-solid fa-plus add-to-cart"></i>
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
+            <div
+                    class="col-lg-9 col-md-6 col-12 d-flex flex-column align-items-start"
+            >
+
+                <div class="container py-3">
+                    <div class="d-flex flex-column justify-content-between">
+                        <h4 class="fw-bold">PRODUCTS</h4>
+                        <div class="pb-4 d-flex justify-content-between align-items-stretch">
+                            <form class="search-container" role="search">
+                                <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input class="product-search" type="search" placeholder="Search"
+                                       aria-label="Search"/>
+                            </form>
+                            <div class="d-flex justify-content-start align-items-center gap-3">
+                                <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">NEW</span></a>
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">BESTSELLER</span></a>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">CLOTHES</span></a>
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">ACCESSORIES</span></a>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="">SKIN CARE</span></a>
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">HEALTH</span></a>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center align-items-center gap-1">
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">BOOKS</span></a>
+                                    <a href="#" class="text-decoration text-grey btn btn-sm rounded-0 btn-outline-dark w-100"><span class="product-category">ELECTRONICS</span></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
+                    <div class="row justify-content-start g-4">
+                        {% for product in products %}
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <a href="{{url_for('product',product_id=product.id)}}"
+                               class="text-decoration-none text-dark">
+                                <div
+                                        class="d-flex flex-column justify-content-center align-items-start overflow-hidden position-relative"
+                                >
+                                    <div class="product-image">
+                                        <img
+                                                src="{{product.img_url}}"
+                                                class="card-image"
+                                                alt="Product 1"
+                                                height="100%"
+                                                width="100%"
+                                        />
+                                        <span class="text-white category">{{product.category}}</span>
+                                        <a href="{{url_for('add_to_cart',id=product.id)}}"
+                                           class="text-decoration-none text-dark add-to-cart">
+                                            <i class="fa-solid fa-plus "></i>
+                                        </a>
+
+                                    </div>
+                                    {% if 0 < product.no_in_stock < 5 %}
+                                    <button class="btn btn-warning rounded-pill btn-sm mt-2"><span class="fw-bold ">Limited</span>
+                                    </button>
+                                    {% elif product.no_in_stock > 5 %}
+                                    <button class="btn btn-success rounded-pill btn-sm mt-2"><span class="fw-bold ">In stock</span>
+                                    </button>
+                                    {% else %}
+                                    <button class="btn btn-danger rounded-pill btn-sm mt-2"><span class="fw-bold ">Out of stock</span>
+                                    </button>
+                                    {% endif %}
+                                    <h5 class="product-title mt-2">{{product.name}}</h5>
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        {% if product.discount > 0 %}
+                                        <div>
+                                            <p class="discount-price mb-0">{{ product.price}}</p>
+                                            <p class="product-price mb-0">
+                                                {{get_discounted_price(product.discount,product.price)}}</p>
+                                        </div>
+                                        {% else %}
+                                        <p class="product-price mb-0">{{ product.price}}</p>
+                                        {% endif %}
+                                        {% if current_user.id == product.author_id%}
+                                        <div class="d-flex justify-content-between align-item-center gap-4">
+                                            <a href="{{url_for('delete',id=product.id)}}"
+                                               class="text-decoration-none text-dark">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+                                            <a href="{{url_for('edit',product_id=product.id)}}"
+                                               class="text-decoration-none text-dark">
+                                                <i class="fa-solid fa-pen-to-square"></i>
+                                            </a>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
-                  </a>
                 </div>
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
-                    </div>
-                  </a>
+                <div aria-label="Page navigation example" class="align-self-start">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-lg-4 col-6">
-                  <a href="product.html" class="text-decoration-none text-dark">
-                    <div
-                      class="d-flex flex-column justify-content-center align-items-start"
-                    >
-                      <div class="product-image">
-                        <img
-                          src="https://images.unsplash.com/photo-1578681994506-b8f463449011?q=80&w=435&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          class="card-image"
-                          alt="Product 1"
-                          height="100%"
-                          width="100%"
-                        />
-                      </div>
-                      <h5 class="product-title mt-2">Wireless Headphones</h5>
-                      <p class="product-price">$99.99</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
             </div>
-            <div aria-label="Page navigation example" class="align-self-start">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </section>
-    </main>
+    </section>
+</main>
 {% include 'footer.html'%}

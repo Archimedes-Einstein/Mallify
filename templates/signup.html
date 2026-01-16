@@ -1,60 +1,78 @@
 {% include 'header.html'%}
-    <section
-      class="hero-section"
-      style="
+<section
+        class="hero-section"
+        style="
         background-image: url('https://plus.unsplash.com/premium_vector-1726216371069-9e179b7ff838?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
       "
-    >
-      <div class="d-flex flex-column justify-content-center align-items-center">
+>
+    <div class="d-flex flex-column justify-content-center align-items-center">
         <h1 class="hero-title">WELCOME TO Mallify</h1>
         <div class="d-flex justify-content-start align-items-center">
-          <p class="hero-subtitle">Let's get you started with Mallify!</p>
+            <p class="hero-subtitle">Let's get you started with Mallify!</p>
         </div>
-      </div>
-    </section>
-    <section class="container my-5 shadow py-5 rounded">
-      <div class="d-flex flex-column justify-content-center align-items-center">
+    </div>
+</section>
+<section class="container my-5 shadow py-5 rounded">
+    <div class="d-flex flex-column justify-content-center align-items-center">
         <i class="fa-solid fa-shop" style="font-size: 8rem"></i>
         <h2 class="mb-4">Create an Account</h2>
-      </div>
-      <form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert alert-warning d-flex align-items-center justify-content-around" role="alert">
+                <i class="fa-solid fa-triangle-exclamation fa-lg" style="color: #FFD43B;"></i>
+                <ul class="flashes d-flex flex-column justify-content-start align-items-start" style="list-style:none;color:red;">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <form action="{{url_for('signup')}}" method="post">
         <div class="mb-4">
-          <label for="name" class="form-label fs-5 fw-medium">Name</label>
-          <input
-            type="name"
-            class="form-control"
-            id="name"
-            placeholder="Enter your Name"
-            required
-          />
+            <label for="name" class="form-label fs-6 fw-medium">Name</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="name"
+                    placeholder="Enter your Name"
+                    required
+            />
         </div>
         <div class="mb-4">
-          <label for="email" class="form-label fw-medium fs-5"
+            <label for="email" class="form-label fw-medium fs-6"
             >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
+            >
+            <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+            />
         </div>
         <div class="mb-4">
-          <label for="password" class="form-label fw-medium fs-5"
+            <label for="password" class="form-label fw-medium fs-6"
             >Password</label
-          >
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            placeholder="Enter your password"
-            required
-          />
+            >
+            <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+            />
         </div>
         <button type="submit" class="btn btn-primary btn-lg w-100">
-          Login
+            Sign Up
         </button>
-      </form>
-    </section>
+    </form>
+</section>
 {% include 'footer.html'%}

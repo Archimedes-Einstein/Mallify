@@ -1,8 +1,11 @@
 import pymysql
+import os
+from dotenv import load_dotenv
+load_dotenv()
 mydb = pymysql.connect(
     host="localhost",
     user="root",
-    password="astroworld@19",
+    password=os.getenv("PASSWORD"),
 )
 my_cursor = mydb.cursor()
 my_cursor.execute("CREATE DATABASE data")

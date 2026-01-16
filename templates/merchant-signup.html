@@ -1,4 +1,4 @@
-{% include 'header.html'%}
+{% include 'header.html' %}
 <section
         class="hero-section"
         style="
@@ -6,10 +6,10 @@
       "
 >
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <h1 class="hero-title">WELCOME BACK</h1>
+        <h1 class="hero-title">Become A Merchant</h1>
         <div class="d-flex justify-content-start align-items-center">
             <p class="hero-subtitle">
-                Let's get you back to shopping with Mallify!
+                Let's get you back to selling with Mallify!
             </p>
         </div>
     </div>
@@ -17,7 +17,7 @@
 <section class="container my-5 shadow py-5 rounded">
     <div class="d-flex flex-column justify-content-center align-items-center gap-2">
         <i class="fa-solid fa-shop" style="font-size: 8rem"></i>
-        <h2 class="mb-4">Login to Your Account</h2>{% with messages = get_flashed_messages() %}
+        <h2 class="mb-4">Details</h2>{% with messages = get_flashed_messages() %}
         {% if messages %}
         <div class="alert alert-warning d-flex align-items-center justify-content-around" role="alert">
             <i class="fa-solid fa-triangle-exclamation fa-lg" style="color: #FFD43B;"></i>
@@ -32,48 +32,49 @@
         {% endif %}
         {% endwith %}
     </div>
-    <form action="{{url_for('login')}}" method="post" class="needs-validation">
+    <form action="{{url_for('merchant_signup')}}" method="post">
         <div class="mb-4">
-            <label for="email" class="form-label fs-6 fw-medium"
-            >Email address</label
+            <label for="whatsapp_no" class="form-label fs-6 fw-medium"
+            >Whatsapp Number</label
             >
             <input
-                    type="email"
+                    type="tel"
                     class="form-control"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your email"
+                    name="whatsapp_no"
+                    id="whatsapp_no"
+                    placeholder="E.g +234 9150 7055 79"
                     required
             />
-            <div class="valid-feedback">
-                Looks Good
-            </div>
-            <div class="invalid-feedback">
-                Invalid Email
-            </div>
         </div>
         <div class="mb-4">
-            <label for="password" class="form-label fs-6 fw-medium"
-            >Password</label
+            <label for="account_no" class="form-label fs-6 fw-medium"
+            >Account Number</label
             >
             <input
-                    type="password"
-                    name="password"
+                    type="text"
+                    name="account_no"
                     class="form-control"
-                    id="password"
-                    placeholder="Enter your password"
+                    id="account_no"
+                    placeholder="Enter your account number"
                     required
             />
-            <div class="valid-feedback">
-                Looks Good
-            </div>
-            <div class="invalid-feedback">
-                Invalid password
-            </div>
+        </div>
+        <div class="mb-4">
+            <label for="location" class="form-label fs-6 fw-medium"
+            >Shop Location (Optional)</label
+            >
+            <input
+                    type="text"
+                    name="location"
+                    class="form-control"
+                    id="location"
+                    placeholder="Enter the Google map URL for your shop"
+            />
         </div>
         <button type="submit" class="btn btn-primary btn-lg w-100">
-            Login
+           Create!
         </button>
     </form>
 </section>
-{% include 'footer.html'%}
+
+{% include 'footer.html' %}
