@@ -34,7 +34,7 @@
 
     <form action="{{url_for('signup')}}" method="post">
         <div class="mb-4">
-            <label for="name" class="form-label fs-6 fw-medium">Name</label>
+            <label for="name" class="form-label fw-bold text-uppercase fs-6">Name</label>
             <input
                     type="text"
                     class="form-control"
@@ -45,7 +45,7 @@
             />
         </div>
         <div class="mb-4">
-            <label for="email" class="form-label fw-medium fs-6"
+            <label for="email" class="form-label fw-bold text-uppercase fs-6"
             >Email address</label
             >
             <input
@@ -58,7 +58,7 @@
             />
         </div>
         <div class="mb-4">
-            <label for="password" class="form-label fw-medium fs-6"
+            <label for="password" class="form-label fw-bold text-uppercase fs-6"
             >Password</label
             >
             <input
@@ -70,7 +70,7 @@
                     required
             />
         </div>
-        <button type="submit" class="btn btn-primary btn-lg w-100">
+        <button type="submit" class="btn btn-secondary btn-lg w-100 rounded-0 text-uppercase">
             Sign Up
         </button>
     </form>

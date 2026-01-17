@@ -73,7 +73,7 @@ def inject_now():
 @app.context_processor
 def get_cart_no():
     if current_user.is_authenticated:
-        return {'cart_no':len(current_user.cart)}
+        return {'cart_no': Cart.query.filter(Cart.id == current_user.id).count()}
     return {'cart_no': 0}
 
 def get_discounted_price(discount:int,price:str) -> str:
@@ -103,7 +103,9 @@ def products():
 @app.route("/product/<int:product_id>", methods=['POST','GET'])
 def product(product_id):
     specific_product = Products.query.where(Products.id == product_id).scalar()
-    return render_template("product.html",specific_product=specific_product)
+    related_products = Products.query.filter_by(category=specific_product.category)
+    print(related_products[0].discount)
+    return render_template("product.html",specific_product=specific_product,related_products=related_products,get_discounted_price=get_discounted_price)
 
 
 @app.route("/login", methods=['POST', 'GET'])
@@ -153,6 +155,7 @@ def logout():
     return redirect(url_for("home"))
 
 @app.route('/merchant-signup', methods=['POST','GET'])
+@login_required
 def merchant_signup():
     whatsapp_no = request.form.get('whatsapp_no')
     account_no = request.form.get('account_no')
@@ -166,6 +169,7 @@ def merchant_signup():
 
 
 @app.route('/add-products', methods=['POST', 'GET'])
+@login_required
 def add_products():
     product_name = request.form.get('product_name')
     product_category = request.form.get("category")
@@ -194,6 +198,7 @@ def add_products():
     return render_template("add-products.html")
 
 @app.route('/delete/<int:id>', methods=['POST','GET'])
+@login_required
 def delete(id):
     delete_product = Products.query.where(Products.id == id).scalar()
     db.session.delete(delete_product)
@@ -212,6 +217,7 @@ def add_to_cart(id):
     db.session.commit()
     return redirect(url_for('cart'))
 @app.route('/edit-product/<int:product_id>', methods=['POST','GET'])
+@login_required
 def edit(product_id):
     edit_product = Products.query.where(Products.id == product_id).scalar()
     product_name = request.form.get('product_name')
