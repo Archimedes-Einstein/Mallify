@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from pyexpat.errors import messages
 from sqlalchemy.orm import DeclarativeBase, relationship
 from dotenv import load_dotenv
+import requests
 from flask_login import LoginManager, login_user, logout_user, current_user, UserMixin, login_required
 from unicodedata import category
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bcrypt import Bcrypt
 import os
+from payment_manager import CreateCashierPayment
 from datetime import datetime
 
 
@@ -73,7 +75,7 @@ def inject_now():
 @app.context_processor
 def get_cart_no():
     if current_user.is_authenticated:
-        return {'cart_no': Cart.query.filter(Cart.id == current_user.id).count()}
+        return {'cart_no': len(current_user.cart)}
     return {'cart_no': 0}
 
 def get_discounted_price(discount:int,price:str) -> str:
@@ -104,9 +106,21 @@ def products():
 def product(product_id):
     specific_product = Products.query.where(Products.id == product_id).scalar()
     related_products = Products.query.filter_by(category=specific_product.category)
-    print(related_products[0].discount)
-    return render_template("product.html",specific_product=specific_product,related_products=related_products,get_discounted_price=get_discounted_price)
+    other_products = Products.query.all()
+    return render_template("product.html",specific_product=specific_product,
+                           related_products=related_products,
+                           get_discounted_price=get_discounted_price,
+                           other_products=other_products)
 
+
+@app.route('/checkout/<int:product_id>')
+def checkout(product_id):
+    product_purchased = db.session.get(Products,product_id)
+    cashier_payment = CreateCashierPayment()
+    product_price = float(product_purchased.price.replace('$','')) * 141800
+    url = cashier_payment.create_payment(total=int(product_price), user_email=current_user.email, description=product_purchased.description,
+                                         name=product_purchased.name, user_id=f"userid00{current_user.id}", user_name=current_user.name)
+    return redirect(url)
 
 @app.route("/login", methods=['POST', 'GET'])
 def login():
@@ -182,20 +196,42 @@ def add_products():
         return redirect(url_for('merchant_signup'))
     if request.method == 'POST':
         with app.app_context():
-            new_product = Products(
-                name=product_name,
-                price=price,
-                category=product_category,
-                description=description,
-                discount=discount,
-                no_in_stock=amount_in_stock,
-                img_url=img_url,
-                author=current_user,
-            )
+            if discount:
+                new_product = Products(
+                    name=product_name,
+                    price=price,
+                    category=product_category,
+                    description=description,
+                    discount=discount,
+                    no_in_stock=amount_in_stock,
+                    img_url=img_url,
+                    author=current_user,
+                )
+            else:
+                new_product = Products(
+                    name=product_name,
+                    price=price,
+                    category=product_category,
+                    description=description,
+                    no_in_stock=amount_in_stock,
+                    img_url=img_url,
+                    author=current_user,
+                )
             db.session.add(new_product)
             db.session.commit()
             return redirect(url_for('products'))
     return render_template("add-products.html")
+
+
+@app.route('/delete-from-cart/<int:cart_id>')
+@login_required
+def remove_from_cart(cart_id):
+    with app.app_context():
+        product_removed = Cart.query.where(Cart.id == cart_id).scalar()
+        db.session.delete(product_removed)
+        db.session.commit()
+    return redirect(url_for('cart'))
+
 
 @app.route('/delete/<int:id>', methods=['POST','GET'])
 @login_required
@@ -204,10 +240,24 @@ def delete(id):
     db.session.delete(delete_product)
     db.session.commit()
     return redirect(url_for('products'))
-@app.route("/cart")
+@app.route("/cart", methods=['POST','GET'])
 @login_required
 def cart():
-    return render_template("cart.html")
+    products_in_cart = current_user.cart
+    subtotal = round(sum([float(item.products.price.replace("$",'')) for item in products_in_cart]),2)
+    discount = round(sum(((100 - float(item.products.discount))/100) * float(item.products.price.replace('$','')) for item in products_in_cart if item.products.discount),2)
+    shipping_fee = os.environ.get("SHIPPING_FEE")
+    checkbox = request.form.get('checkbox')
+    if request.method == 'POST':
+        if checkbox:
+            cashier_payment = CreateCashierPayment()
+            total = subtotal * 141800
+            url = cashier_payment.create_payment(total=total, user_email=current_user.email,
+                                                 description="A list of products purchased from there cart.",
+                                                 name="List of products", user_id=f"userid00{current_user.id}",
+                                                 user_name=current_user.name)
+            return redirect(url)
+    return render_template("cart.html",subtotal=subtotal,discount=discount,shipping_fee=shipping_fee)
 
 @app.route('/add_to_cart/<int:id>',methods=['POST','GET'])
 def add_to_cart(id):

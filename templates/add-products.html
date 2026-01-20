@@ -17,7 +17,7 @@
 <section class="container my-5 shadow py-5 rounded">
     <div class="d-flex flex-column justify-content-center align-items-center">
         <i class="fa-solid fa-shop" style="font-size: 8rem"></i>
-        <h2 class="mb-4">Add your product</h2>{% with messages = get_flashed_messages() %}
+        <h2 class="mb-4 text-uppercase fw-bold">Mallify</h2>{% with messages = get_flashed_messages() %}
         {% if messages %}
         <div class="alert alert-warning d-flex align-items-center justify-content-around" role="alert">
             <i class="fa-solid fa-triangle-exclamation fa-lg" style="color: #FFD43B;"></i>
@@ -35,7 +35,7 @@
     <form action="{{url_for('add_products')}}" method="post" novalidate class="needs-validation">
 
         <div class="mb-4">
-            <label for="product_name" class="form-label fs-6 fw-medium"
+            <label for="product_name" class="form-label fs-6 fw-bold text-uppercase"
             >Product Name</label
             >
             <input
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="img_url" class="form-label fs-6 fw-medium"
+            <label for="img_url" class="form-label fs-6 fw-bold text-uppercase"
             >Image URL</label
             >
             <input
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="price" class="form-label fs-6 fw-medium"
+            <label for="price" class="form-label fs-6 fw-bold text-uppercase"
             >Price</label
             >
             <input
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="category" class="form-label fs-6 fw-medium"
+            <label for="category" class="form-label fs-6 fs-6 fw-bold text-uppercase"
             >Category</label
             >
             <input class="form-control"
@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="description" class="form-label fs-6 fw-medium"
+            <label for="description" class="form-label fs-6 fs-6 fw-bold text-uppercase"
             >Description</label
             >
             <textarea
@@ -129,7 +129,7 @@
         </div>
 
         <div class="mb-4">
-            <label for="instock" class="form-label fs-6 fw-medium"
+            <label for="instock" class="form-label fs-6 fs-6 fw-bold text-uppercase"
             >Amount in Stock</label
             >
             <input
@@ -148,7 +148,7 @@
             </div>
         </div>
         <div class="mb-4">
-            <label for="discount" class="form-label fs-6 fw-medium"
+            <label for="discount" class="form-label fs-6 fs-6 fw-bold text-uppercase"
             >Discount</label
             >
             <input
@@ -157,10 +157,16 @@
                     class="form-control"
                     id="discount"
                     placeholder="Enter your discount as an integer (e.g 20 for 20% discount)"
+                    required
             />
-
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Please enter the amount you have in stock.
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg w-100">
+        <button type="submit" class="btn btn-secondary btn-lg w-100 rounded-0 text-uppercase" >
             ADD
         </button>
     </form>

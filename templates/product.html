@@ -37,7 +37,7 @@
                     </div>
                     <div class="mb-0 pb-0 w-100">
                         <a
-                                href="#"
+                                href="{{url_for('checkout',product_id=specific_product.id)}}"
                                 class="text-decoration-none  text-light btn btn-lg btn-secondary rounded-0 w-100"
                         >Checkout</a
                         >
@@ -89,12 +89,16 @@
                     {% endif %}
                     <h5 class="product-title mt-2">{{product.name}}</h5>
                     <div class="d-flex justify-content-between align-items-center w-100">
-                        {% if product.discount > 0 %}
-                        <div>
-                            <p class="discount-price mb-0">{{ product.price}}</p>
-                            <p class="product-price mb-0">
-                                {{get_discounted_price(product.discount,product.price)}}</p>
-                        </div>
+                        {% if product.discount %}
+                            {% if product.discount > 0 %}
+                            <div>
+                                <p class="discount-price mb-0">{{ product.price}}</p>
+                                <p class="product-price mb-0">
+                                    {{get_discounted_price(product.discount,product.price)}}</p>
+                            </div>
+                            {% else %}
+                            <p class="product-price mb-0">{{ product.price}}</p>
+                            {% endif %}
                         {% else %}
                         <p class="product-price mb-0">{{ product.price}}</p>
                         {% endif %}
@@ -117,6 +121,74 @@
         {% endfor %}
     </div>
     {% endif %}
+    <div class="border-bottom border-1 mb-3 pt-5">
+        <h5 class="fw-bold text-start text-uppercase">Other Products</h5>
+    </div>
+    <div class="row justify-content-start border-bottom border-1">
+        {% for product in other_products %}
+        <div class="col-lg-4 col-md-4 col-6">
+            <a href="{{url_for('product',product_id=product.id)}}"
+               class="text-decoration-none text-dark">
+                <div
+                        class="d-flex flex-column justify-content-center align-items-start overflow-hidden position-relative"
+                >
+                    <div class="product-image">
+                        <img
+                                src="{{product.img_url}}"
+                                class="card-image"
+                                alt="Product 1"
+                                height="100%"
+                                width="100%"
+                        />
+                        <span class="text-white category">{{product.category}}</span>
+                        <a href="{{url_for('add_to_cart',id=product.id)}}"
+                           class="text-decoration-none text-dark add-to-cart">
+                            <i class="fa-solid fa-plus "></i>
+                        </a>
 
+                    </div>
+                    {% if 0 < product.no_in_stock < 5 %}
+                    <button class="btn btn-warning rounded-pill btn-sm mt-2"><span class="fw-bold ">Limited</span>
+                    </button>
+                    {% elif product.no_in_stock > 5 %}
+                    <button class="btn btn-success rounded-pill btn-sm mt-2"><span class="fw-bold ">In stock</span>
+                    </button>
+                    {% else %}
+                    <button class="btn btn-danger rounded-pill btn-sm mt-2"><span class="fw-bold ">Out of stock</span>
+                    </button>
+                    {% endif %}
+                    <h5 class="product-title mt-2">{{product.name}}</h5>
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        {% if product.discount %}
+                            {% if product.discount > 0 %}
+                            <div>
+                                <p class="discount-price mb-0">{{ product.price}}</p>
+                                <p class="product-price mb-0">
+                                    {{get_discounted_price(product.discount,product.price)}}</p>
+                            </div>
+                            {% else %}
+                            <p class="product-price mb-0">{{ product.price}}</p>
+                            {% endif %}
+                        {% else %}
+                            <p class="product-price mb-0">{{ product.price}}</p>
+                        {% endif %}
+                        {% if current_user.id == product.author_id%}
+                        <div class="d-flex justify-content-between align-item-center gap-4">
+                            <a href="{{url_for('delete',id=product.id)}}"
+                               class="text-decoration-none text-dark">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <a href="{{url_for('edit',product_id=product.id)}}"
+                               class="text-decoration-none text-dark">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 {% include "footer.html" %}

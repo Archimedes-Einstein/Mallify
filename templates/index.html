@@ -1,20 +1,22 @@
 {% include 'header.html'%}
 {% with messages = get_flashed_messages(with_categories=True) %}
 {% if messages %}
-<div class="toast-container position-static flashes">
+<ul class="flashes position-absolute" style="list-style:None;top:5rem;width:15rem;">
     {% for category,message in messages %}
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <i class="fa-regular fa-circle-check fa-lg" style="color: #63E6BE;"></i>
-            <strong class="me-auto">{{category}}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <li class="toast-container">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fa-solid fa-circle-check text-success"></i>
+                <strong class="me-auto">{{category}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                {{message}}
+            </div>
         </div>
-        <div class="toast-body">
-            {{ message }}
-        </div>
-    </div>
+    </li>
     {% endfor %}
-</div>
+</ul>
 {% endif %}
 {% endwith %}
 
@@ -31,7 +33,7 @@
             <div class="hero-buttons">
                 <a
                         href="#"
-                        class="btn btn-outline-primary text-decoration-none btn-lg"
+                        class="btn btn-outline-primary text-decoration-none btn-lg size"
                 ><i class="fa-solid fa-bag-shopping"></i> Shop Now</a
                 >
                 <a href="#" class="btn btn-outline-dark text-decoration-none btn-lg"

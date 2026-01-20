@@ -50,6 +50,7 @@ body {
   gap: 1rem;
 }
 .hero-title {
+  text-transform: uppercase;
   font-size: 4.5rem;
   font-weight: 800;
   color: #191818;
@@ -332,6 +333,12 @@ footer {
   .fa-pen-to-square:hover{
     color: blue;
   }
+  .toast{
+    display: block;
+  }
+  .remove-toast{
+    display: none;
+  }
 @media (max-width: 770px) {
   .hero-section {
     height: 50vh;
@@ -343,10 +350,10 @@ footer {
     gap: 0.2rem;
   }
   .hero-title {
-    font-size: 2.9rem;
+    font-size: 2.5rem;
   }
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .features-title {
     font-size: 2rem;
@@ -395,13 +402,16 @@ footer {
   .product-image{
     height: 300px;
   }
+  .search-container{
+    width: 100%
+  }
 
   @media (max-width: 468px) {
     .view-product{
         width: 100%;
     }
     .hero-title {
-      font-size: 2.2rem;
+      font-size: 2rem;
     }
     .hero-subtitle {
       font-size: 1rem;

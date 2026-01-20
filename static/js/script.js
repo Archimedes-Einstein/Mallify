@@ -1,11 +1,8 @@
 const formRange = document.getElementById("rangeId");
 const formOutput = document.getElementById("rangeValue");
 const currency = document.getElementById("currency");
-//const caretUp = document.getElementById("caret-up");
-//const caretDown = document.getElementById("caret-down");
-//cart;
-//const numberOfItems = document.getElementById("number-of-items");
-
+const closeButton = document.querySelector('.btn-close')
+const toast = document.querySelector('.toast')
 const instock = 20;
 const sold = 3;
 const rateConverter = () => {
@@ -19,6 +16,7 @@ const rateConverter = () => {
     formOutput.textContent = `₦${valueInNaria}`;
   }
 };
+
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
   'use strict'
@@ -48,3 +46,6 @@ formRange.addEventListener("input", () => {
 currency.addEventListener("click", () => {
   rateConverter();
 });
+closeButton.addEventListener('click',()=>{
+    toast.classList.toggle('remove-toast')
+})

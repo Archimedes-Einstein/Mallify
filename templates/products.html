@@ -136,7 +136,7 @@
                 <div class="container py-3">
                     <div class="d-flex flex-column justify-content-between">
                         <h4 class="fw-bold">PRODUCTS</h4>
-                        <div class="pb-4 d-flex justify-content-between align-items-stretch">
+                        <div class="pb-4 d-flex flex-sm-column flex-lg-row justify-content-between align-items-stretch">
                             <form class="search-container" role="search">
                                 <button class="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                 <input class="product-search" type="search" placeholder="Search"
@@ -197,14 +197,18 @@
                                     {% endif %}
                                     <h5 class="product-title mt-2">{{product.name}}</h5>
                                     <div class="d-flex justify-content-between align-items-center w-100">
-                                        {% if product.discount > 0 %}
-                                        <div>
-                                            <p class="discount-price mb-0">{{ product.price}}</p>
-                                            <p class="product-price mb-0">
-                                                {{get_discounted_price(product.discount,product.price)}}</p>
-                                        </div>
+                                        {% if product.discount %}
+                                            {% if product.discount > 0 %}
+                                            <div>
+                                                <p class="discount-price mb-0">{{ product.price}}</p>
+                                                <p class="product-price mb-0">
+                                                    {{get_discounted_price(product.discount,product.price)}}</p>
+                                            </div>
+                                            {% else %}
+                                            <p class="product-price mb-0">{{ product.price}}</p>
+                                            {% endif %}
                                         {% else %}
-                                        <p class="product-price mb-0">{{ product.price}}</p>
+                                            <p class="product-price mb-0">{{ product.price}}</p>
                                         {% endif %}
                                         {% if current_user.id == product.author_id%}
                                         <div class="d-flex justify-content-between align-item-center gap-4">
