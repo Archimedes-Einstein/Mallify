@@ -31,7 +31,7 @@ body {
   right: -7px;
 }
 .hero-section {
-  height: 75vh;
+  height: 65vh;
   display: flex;
   background-color: #8e8c8c;
   flex-direction: column;
@@ -53,7 +53,7 @@ body {
   text-transform: uppercase;
   font-size: 4.5rem;
   font-weight: 800;
-  color: #191818;
+  color: #41444B;
   font-family: "Montserrat", sans-serif;
 }
 .hero-subtitle {
@@ -259,6 +259,12 @@ footer {
   text-decoration: none;
   font-size: 1.5rem;
 }
+.product-categories{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+
+}
 .product-title {
   font-size: 1.1rem;
   font-weight: 500;
@@ -282,7 +288,8 @@ footer {
 }
 .search-container{
     position:relative;
-    width: 50%;
+    height:70px;
+    width: 100%;
 }
 .product-search{
     height:100%;
@@ -339,9 +346,15 @@ footer {
   .remove-toast{
     display: none;
   }
+
+  .carousel-item{
+    background-color:#F5F5F0;
+  }
+
+}
 @media (max-width: 770px) {
   .hero-section {
-    height: 50vh;
+    height: 42vh;
     background-size: fit;
     justify-content: center;
     align-items: center;

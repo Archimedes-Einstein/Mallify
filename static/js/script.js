@@ -16,7 +16,13 @@ const rateConverter = () => {
     formOutput.textContent = `₦${valueInNaria}`;
   }
 };
-
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+            console.log(entry)
+        }
+    })
+},{})
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
   'use strict'

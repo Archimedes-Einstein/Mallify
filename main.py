@@ -11,9 +11,9 @@ from flask_bcrypt import Bcrypt
 import os
 from payment_manager import CreateCashierPayment
 from datetime import datetime
-
-
-
+from flask_ckeditor import CKEditor
+from flask_bootstrap import Bootstrap5
+from form import *
 class Base(DeclarativeBase):
     pass
 
@@ -21,6 +21,8 @@ class Base(DeclarativeBase):
 login_manager = LoginManager()
 db = SQLAlchemy(model_class=Base)
 app = Flask(__name__)
+bootstrap = Bootstrap5(app)
+ckeditor = CKEditor(app)
 app.secret_key = os.getenv("SECRET_KEY")
 bcrypt = Bcrypt(app)
 login_manager.init_app(app)
@@ -64,6 +66,16 @@ class Cart(UserMixin,db.Model):
     product_id = db.Column(db.Integer,db.ForeignKey('products.id'))
     products = relationship('Products', back_populates='cart')
 
+class PaymentDetails(UserMixin,db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    refunded = db.Column(db.String(10),nullable=True)
+    order_no = db.Column(db.String(100),nullable=False)
+    status = db.Column(db.String(50),nullable=False)
+    instrument_type = db.Column(db.String(20),nullable=False)
+    timestamp = db.Column(db.String(100),nullable=False)
+    fee = db.Column(db.String(10),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    user = db.relationship('User',backref='payment_details')
 
 with app.app_context():
     db.create_all()
@@ -292,6 +304,41 @@ def edit(product_id):
             db.session.commit()
         return redirect(url_for('products'))
     return render_template('edit-product.html',edit_product=edit_product)
+
+@app.route('/about-page')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact-us-page')
+def contact_us():
+    form = ContactForm()
+    return render_template('contact.html',form=form)
+
+@app.route('/user-page')
+@login_required
+def user_page():
+    return render_template('user.html')
+
+@app.route("/webhook", methods=['POST','GET'])
+def webhook():
+    data = request.json
+    new_payment = PaymentDetails(
+        amount=data.get('amount'),
+        fee=data.get('fee'),
+        order_no=data.get('outOrderNo'),
+        refunded=data.get('refunded'),
+        status=data.get('status'),
+        instrument_type=data.get('instrumentType'),
+        timestamp=data.get('timestamp'),
+        user=current_user,
+
+    )
+    if data.get('message') == "SUCCESSFUL":
+        flash('Payment Successful',category="Success")
+    else:
+        flash(category='Error',message="Sorry, We couldn't process your payment. Please try again later.")
+    return "OK", 200
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, port=port)
